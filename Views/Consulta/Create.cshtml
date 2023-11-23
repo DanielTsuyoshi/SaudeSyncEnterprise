@@ -1,58 +1,41 @@
-﻿@model IEnumerable<SaudeSync.Entities.Consulta>
+@model SaudeSync.Entities.ConsultaViewModel
 
-    @{
-    ViewData["Title"] = "Lista de Consultas";
-    }
+@{
+    ViewData["Title"] = "Nova Consulta";
+}
 
-    <h1>Consultas</h1>
+<h1>Nova Consulta</h1>
 
-    <p>
-        <a asp-action="Create">Nova Consulta</a>
-    </p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Data)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Medico.Nome)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Paciente.Nome)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Data)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Medico.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Paciente.Nome)
-                </td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
-                    <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
-                </td>
-            </tr>
-        }
-        </tbody>
-    </table>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Data" class="control-label"></label>
+                <input asp-for="Data" class="form-control" />
+                <span asp-validation-for="Data" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MedicoId" class="control-label"></label>
+                <select asp-for="MedicoId" asp-items="ViewBag.Medicos" class="form-control"></select>
+                <span asp-validation-for="MedicoId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PacienteId" class="control-label"></label>
+                <select asp-for="PacienteId" asp-items="ViewBag.Pacientes" class="form-control"></select>
+                <span asp-validation-for="PacienteId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Criar Consulta" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
 
-    @section Scripts {
-        // Adicione scripts, se necessário
-    }
+<div>
+    <a asp-action="Index">Voltar para a Lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
