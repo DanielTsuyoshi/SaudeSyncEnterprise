@@ -1,38 +1,38 @@
-@model IEnumerable<SaudeSync.Entities.LeituraSaude>
-@addTagHelper *, SaudeSync
+﻿@model IEnumerable<SaudeSync.Entities.LeituraSaude>
+    @addTagHelper *, SaudeSync
 
-@{
+    @{
     ViewData["Title"] = "Listagem de Leituras de Saúde";
-}
+    }
 
-<h1>Listagem de Leituras de Saúde</h1>
+    <h1>Listagem de Leituras de Saúde</h1>
 
-@if (TempData["SuccessMessage"] != null)
+    @if (TempData["SuccessMessage"] != null)
 {
     <div class="alert alert-success">
         @TempData["SuccessMessage"]
     </div>
 }
 
-<div>
-    <a asp-action="Create" class="btn btn-primary">Registrar Nova Leitura de Saúde</a>
-</div>
+    <div>
+        <a asp-action="Create" class="btn btn-primary">Registrar Nova Leitura de Saúde</a>
+    </div>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Data da Leitura</th>
-            <th>Peso</th>
-            <th>Altura</th>
-            <th>Pressão Arterial</th>
-            <!-- Adicione esta coluna -->
-            <th>Status</th>
-            <th>Ações</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var leitura in Model)
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Data da Leitura</th>
+                <th>Peso</th>
+                <th>Altura</th>
+                <th>Pressão Arterial</th>
+                <!-- Adicione esta coluna -->
+                <th>Status</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var leitura in Model)
         {
             <tr>
                 <td>@leitura.Id</td>
@@ -48,9 +48,9 @@
                 </td>
             </tr>
         }
-    </tbody>
-</table>
+        </tbody>
+    </table>
 
-@section Scripts {
-    // Se necessário, adicione scripts aqui
-}
+    @section Scripts {
+        // Se necessário, adicione scripts aqui
+    }
