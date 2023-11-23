@@ -1,0 +1,55 @@
+﻿@model SaudeSync.Entities.LeituraSaude
+
+@{
+    ViewData["Title"] = "Detalhes da Leitura de Saúde";
+}
+
+<h1>Detalhes da Leitura de Saúde</h1>
+
+<div>
+    <h4>Leitura de Saúde</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DataLeitura)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DataLeitura)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Peso)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Peso)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Altura)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Altura)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PressaoArterial)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PressaoArterial)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning">Editar</a> |
+    <a asp-action="Index" class="btn btn-info">Voltar para a Lista</a>
+</div>
+
+@section Scripts {
+    <script>
+        // Se necessário, adicione scripts aqui
+    </script>
+}

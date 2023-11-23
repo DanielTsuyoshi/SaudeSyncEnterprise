@@ -1,0 +1,68 @@
+﻿@model IEnumerable<SaudeSync.Entities.Usuario>
+
+    @{
+    ViewData["Title"] = "Listagem de Pacientes";
+    }
+
+    <h1>Listagem de Pacientes</h1>
+
+    @if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+    <div>
+        <a asp-action="Create" class="btn btn-primary">Cadastrar Novo Paciente</a>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Email</th>
+                <th>Senha</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var paciente in Model)
+        {
+            <tr>
+                <td>@paciente.Id</td>
+                <td>@paciente.Nome</td>
+                <td>@paciente.Cpf</td>
+                <td>@paciente.Email</td>
+                <td>
+                    <div class="input-group">
+                        <input class="form-control" type="password" value="@paciente.Senha" readonly />
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-outline-secondary" onclick="togglePassword(this)">Mostrar</button>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@paciente.Id" class="btn btn-warning">Editar</a>
+                    <a asp-action="Details" asp-route-id="@paciente.Id" class="btn btn-info">Detalhes</a>
+                    <a asp-action="Delete" asp-route-id="@paciente.Id" class="btn btn-danger">Excluir</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    @section Scripts {
+        <script>
+            function togglePassword(button) {
+                var passwordInput = button.parentNode.previousElementSibling;
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                } else {
+                    passwordInput.type = 'password';
+                }
+            }
+        </script>
+    }

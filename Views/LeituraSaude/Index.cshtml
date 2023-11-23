@@ -1,0 +1,53 @@
+﻿@model IEnumerable<SaudeSync.Entities.LeituraSaude>
+
+    @{
+    ViewData["Title"] = "Listagem de Leituras de Saúde";
+    }
+
+    <h1>Listagem de Leituras de Saúde</h1>
+
+    @if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+    <div>
+        <a asp-action="Create" class="btn btn-primary">Registrar Nova Leitura de Saúde</a>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Data da Leitura</th>
+                <th>Peso</th>
+                <th>Altura</th>
+                <th>Pressão Arterial</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var leitura in Model)
+        {
+            <tr>
+                <td>@leitura.Id</td>
+                <td>@leitura.DataLeitura</td>
+                <td>@leitura.Peso</td>
+                <td>@leitura.Altura</td>
+                <td>@leitura.PressaoArterial</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@leitura.Id" class="btn btn-warning">Editar</a>
+                    <a asp-action="Details" asp-route-id="@leitura.Id" class="btn btn-info">Detalhes</a>
+                    <a asp-action="Delete" asp-route-id="@leitura.Id" class="btn btn-danger"
+                       onclick="return confirm('Tem certeza de que deseja excluir isso?')">Excluir</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    @section Scripts {
+        // Se necessário, adicione scripts aqui
+    }
