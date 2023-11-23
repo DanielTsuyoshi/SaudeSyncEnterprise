@@ -1,34 +1,31 @@
-﻿@model IEnumerable<SaudeSync.Entities.Consulta>
+@model IEnumerable<SaudeSync.Entities.Consulta>
 
-    @{
+@{
     ViewData["Title"] = "Lista de Consultas";
-    }
+}
 
-    <h1>Consultas</h1>
+<h1>Consultas</h1>
 
-    <p>
-        <a asp-action="Create">Nova Consulta</a>
-    </p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Id)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Data)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Medico.Nome)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Paciente.Nome)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
+<p>
+    <a asp-action="Create">Nova Consulta</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Consultorio.Nome)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
         {
             <tr>
                 <td>
@@ -38,10 +35,7 @@
                     @Html.DisplayFor(modelItem => item.Data)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Medico.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Paciente.Nome)
+                    @Html.DisplayFor(modelItem => item.Consultorio.Nome)
                 </td>
                 <td>
                     <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
@@ -50,9 +44,9 @@
                 </td>
             </tr>
         }
-        </tbody>
-    </table>
+    </tbody>
+</table>
 
-    @section Scripts {
-        // Adicione scripts, se necessário
-    }
+@section Scripts {
+    // Adicione scripts, se necessário
+}
