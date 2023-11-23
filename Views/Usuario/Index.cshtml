@@ -1,35 +1,35 @@
-﻿@model IEnumerable<SaudeSync.Entities.Usuario>
+@model IEnumerable<SaudeSync.Entities.Usuario>
 
-    @{
+@{
     ViewData["Title"] = "Listagem de Pacientes";
-    }
+}
 
-    <h1>Listagem de Pacientes</h1>
+<h1>Listagem de Pacientes</h1>
 
-    @if (TempData["SuccessMessage"] != null)
+@if (TempData["SuccessMessage"] != null)
 {
     <div class="alert alert-success">
         @TempData["SuccessMessage"]
     </div>
 }
 
-    <div>
-        <a asp-action="Create" class="btn btn-primary">Cadastrar Novo Paciente</a>
-    </div>
+<div>
+    <a asp-action="Create" class="btn btn-primary">Cadastrar Novo Paciente</a>
+</div>
 
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>CPF</th>
-                <th>Email</th>
-                <th>Senha</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var paciente in Model)
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Email</th>
+            <th>Senha</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var paciente in Model)
         {
             <tr>
                 <td>@paciente.Id</td>
@@ -51,18 +51,18 @@
                 </td>
             </tr>
         }
-        </tbody>
-    </table>
+    </tbody>
+</table>
 
-    @section Scripts {
-        <script>
-            function togglePassword(button) {
-                var passwordInput = button.parentNode.previousElementSibling;
-                if (passwordInput.type === 'password') {
-                    passwordInput.type = 'text';
-                } else {
-                    passwordInput.type = 'password';
-                }
+@section Scripts {
+    <script>
+        function togglePassword(button) {
+            var passwordInput = button.parentNode.previousElementSibling;
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+            } else {
+                passwordInput.type = 'password';
             }
-        </script>
-    }
+        }
+    </script>
+}
