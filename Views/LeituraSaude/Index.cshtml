@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<SaudeSync.Entities.LeituraSaude>
+    @addTagHelper *, SaudeSync
 
     @{
     ViewData["Title"] = "Listagem de Leituras de Saúde";
@@ -25,6 +26,8 @@
                 <th>Peso</th>
                 <th>Altura</th>
                 <th>Pressão Arterial</th>
+                <!-- Adicione esta coluna -->
+                <th>Status</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -37,11 +40,11 @@
                 <td>@leitura.Peso</td>
                 <td>@leitura.Altura</td>
                 <td>@leitura.PressaoArterial</td>
+                <td><status ativo="@leitura.Ativo"></status></td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@leitura.Id" class="btn btn-warning">Editar</a>
                     <a asp-action="Details" asp-route-id="@leitura.Id" class="btn btn-info">Detalhes</a>
-                    <a asp-action="Delete" asp-route-id="@leitura.Id" class="btn btn-danger"
-                       onclick="return confirm('Tem certeza de que deseja excluir isso?')">Excluir</a>
+                    <a asp-action="Delete" asp-route-id="@leitura.Id" class="btn btn-danger" onclick="return confirm('Tem certeza de que deseja excluir isso?')">Excluir</a>
                 </td>
             </tr>
         }
